@@ -21,11 +21,11 @@ public class StartService {
 			sr.readSettings("settings.xml");
 			Connection conn = Util.connectToMySQL
 					(sr.getAddr(), sr.getDBPort(), sr.getDatabaseName(), sr.getUser(), sr.getPassword());
-            AccountServiceImpl service = new AccountServiceImpl
+			AccountServiceImpl service = new AccountServiceImpl
             		(conn, sr.getTableName(), sr.getIdColumn(), sr.getValueColumn(), 5000L);
 			Registry registry = LocateRegistry.createRegistry(sr.getRmiPort());
-            sr.reset();
-            sr = null;
+			sr.reset();
+			sr = null;
 			registry.rebind("AccountService", service);
 			printer.println("AccountService is running");
 			while (scan.hasNext())
