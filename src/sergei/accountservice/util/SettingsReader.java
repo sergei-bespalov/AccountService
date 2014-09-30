@@ -94,9 +94,9 @@ public class SettingsReader {
 	public void reset()
 	{
 		dbPort = null;
-        addr = null;
-        databaseName = null;
-        user = null;
+		addr = null;
+		databaseName = null;
+		user = null;
 		password = null;
 		table = null;
 		idColumn = null;
