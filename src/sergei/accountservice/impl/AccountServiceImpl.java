@@ -16,9 +16,9 @@ import sergei.accountservice.util.UnitOfTime;
 
 public class AccountServiceImpl extends UnicastRemoteObject implements AccountService{
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -283431263506521783L;
+    * 
+    */
+    private static final long serialVersionUID = -283431263506521783L;
     private Connection                   conn              = null;
     private Statement                    st                = null;
     private String                       TABLE             = null;
