@@ -13,15 +13,15 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class SettingsReader {
-	private Integer		 dbPort       = null;
-	private Inet4Address addr         = null;
-	private String       databaseName = null;
-	private String		 user         = null;
-	private String		 password     = null;
-	private String		 table        = null;
-	private String		 idColumn     = null;
-	private String		 valueColumn  = null;
-	private Integer		 rmiPort      = null;
+	private Integer			dbPort       = null;
+	private Inet4Address	addr         = null;
+	private String			databaseName = null;
+	private String			user         = null;
+	private String			password     = null;
+	private String			table        = null;
+	private String			idColumn     = null;
+	private String			valueColumn  = null;
+	private Integer			rmiPort      = null;
 	/*
 	 * reads the configuration file
 	 * @param path the path to the configuration file
