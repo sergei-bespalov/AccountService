@@ -19,20 +19,20 @@ public class AccountServiceImpl extends UnicastRemoteObject implements AccountSe
 	 * 
 	 */
 	private static final long serialVersionUID = -283431263506521783L;
-	private Connection                   conn              = null;
+    private Connection                   conn              = null;
     private Statement                    st                = null;
-    private String 						 TABLE	           = null;
-    private String						 ID		           = null;
-    private String						 DATA      	       = null;
+    private String                       TABLE             = null;
+    private String                       ID                = null;
+    private String						 DATA              = null;
     private ConcurrentMap<Integer, Long> cache             = null;
-    private Long 			    		 ñountGetAmount    = null;
-    private Long    					 ñountAddAmount    = null;
-    private Integer						 getAmountPerTime  = null;
-    private Integer						 tGetAmountPerTime = null;
+    private Long                         countGetAmount    = null;
+    private Long                         countAddAmount    = null;
+    private Integer                      getAmountPerTime  = null;
+    private Integer                      tGetAmountPerTime = null;
     private Integer                      addAmountPerTime  = null;
     private Integer                      tAddAmountPerTime = null;
-    private Long						 startTime         = null;
-    private Long						 timeUnit          = null;
+    private Long                         startTime         = null;
+    private Long                         timeUnit          = null;
     /* 
      * Constructor
 	 * @param dbCommection  database connection
@@ -79,15 +79,15 @@ public class AccountServiceImpl extends UnicastRemoteObject implements AccountSe
 	public synchronized void addAmount(Integer id, Long value) throws SQLException, RemoteException {
 		if(cache.containsKey(id)) cache.remove(id);
 		ResultSet rs = st.executeQuery("select " +ID 
-				                      +" from " +TABLE
-				                      +" where " +ID +"=" +id);
+                                      +" from " +TABLE
+                                      +" where " +ID +"=" +id);
 		if (rs.next()){
 			st.executeUpdate("update " +TABLE
-					        +" set " +DATA +"=" +DATA +"+" +value
-							+" where " +ID +"=" +id);
+                            +" set " +DATA +"=" +DATA +"+" +value
+                            +" where " +ID +"=" +id);
 		}else{
 			st.executeUpdate("insert into " +TABLE +" (" +ID +"," +DATA +")"
-							+" values (" +id +"," +value +")");
+                            +" values (" +id +"," +value +")");
 		}
 		st.executeUpdate("commit");
 		writeStatistics("addAmount");
@@ -121,8 +121,8 @@ public class AccountServiceImpl extends UnicastRemoteObject implements AccountSe
 	 */
 	private void writeStatistics(String method)
 	{
-		if(method.equals("addAmount"))ñountAddAmount++;
-		if(method.equals("getAmount"))ñountGetAmount++;
+		if(method.equals("addAmount"))countAddAmount++;
+		if(method.equals("getAmount"))countGetAmount++;
 		Long time = new Date().getTime()-startTime;
 		if(time <= timeUnit){
 			if(method.equals("addAmount"))tAddAmountPerTime++;
@@ -144,8 +144,8 @@ public class AccountServiceImpl extends UnicastRemoteObject implements AccountSe
 	public void resetStatistics()
 	{
 		startTime = new Date().getTime();
-		ñountGetAmount = 0L;
-		ñountAddAmount = 0L;
+		countGetAmount = 0L;
+		countAddAmount = 0L;
 		getAmountPerTime = 0;
 		addAmountPerTime = 0;
 		tGetAmountPerTime = 0;
@@ -156,14 +156,14 @@ public class AccountServiceImpl extends UnicastRemoteObject implements AccountSe
 	 */
 	public Long CountGetAmount()
 	{
-		return ñountGetAmount;
+		return countGetAmount;
 	}
 	/*
 	 * requests addAmount
 	 */	
 	public Long CountAddAmount()
 	{
-		return ñountAddAmount;
+		return countAddAmount;
 	}
 	/*
 	 * maximum requests getAmount per unit of time
