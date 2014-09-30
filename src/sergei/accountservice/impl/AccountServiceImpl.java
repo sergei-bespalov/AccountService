@@ -23,7 +23,7 @@ public class AccountServiceImpl extends UnicastRemoteObject implements AccountSe
     private Statement                    st                = null;
     private String                       TABLE             = null;
     private String                       ID                = null;
-    private String						 DATA              = null;
+    private String                       DATA              = null;
     private ConcurrentMap<Integer, Long> cache             = null;
     private Long                         countGetAmount    = null;
     private Long                         countAddAmount    = null;
