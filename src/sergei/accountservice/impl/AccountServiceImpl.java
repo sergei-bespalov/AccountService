@@ -77,7 +77,10 @@ public class AccountServiceImpl extends UnicastRemoteObject implements AccountSe
 	
 	@Override
 	public synchronized void addAmount(Integer id, Long value) throws SQLException, RemoteException {
-		if(cache.containsKey(id)) cache.remove(id);
+		if(cache.containsKey(id)){
+			Long balance = cache.get(id);
+			cache.put(id, balance + value);
+		}
 		ResultSet rs = st.executeQuery("select " +ID 
                                       +" from " +TABLE
                                       +" where " +ID +"=" +id);
