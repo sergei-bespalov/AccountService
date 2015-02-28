@@ -5,7 +5,7 @@
    <databaseName>feedback</databaseName>
    <user>newuser</user>
    <password>***</password>
-   <table_name>accounts666</table_name>
+   <table_name>accounts</table_name>
    <column_id_name>id</column_id_name>
    <column_value_name>balance</column_value_name>
    <rmi_registry_port>1099</rmi_registry_port>
